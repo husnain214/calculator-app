@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  
+  <title>Frontend Mentor | Calculator app</title>
+</head>
+<body class = "flex">
+  <div class="calculator-app">
+    <header>
+        <nav class="flex">
+          <h1 class="logo">calc</h1>
+    
+          <div class="theme flex">
+            <span>THEME</span>
+    
+            <div class="theme-toggle">
+              <div class="theme-num flex">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+              </div>
+    
+              <div class="capsule flex">
+                <input type="radio" name="theme" id="theme1" checked>
+                <input type="radio" name="theme" id="theme2">
+                <input type="radio" name="theme" id="theme3">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>
+        </nav>
+    
+        <div class="screen flex">
+          <input type="text" class="output" id="output">
+        </div>
+    </header>
+    
+    <main class="keypad">
+      <div class="keys-grid">
+        <div><button>7</button></div>
+
+        <div><button>8</button></div>
+
+        <div><button>9</button></div>
+
+        <div><button>DEL</button></div>
+
+        <div><button>4</button></div>
+
+        <div><button>5</button></div>
+
+        <div><button>6</button></div>
+
+        <div><button>+</button></div>
+
+        <div><button>1</button></div>
+        
+        <div><button>2</button></div>
+        
+        <div><button>3</button></div>
+        
+        <div><button>-</button></div>
+        
+        <div><button>.</button></div>
+        
+        <div><button>0</button></div>
+        
+        <div><button>/</button></div>
+        
+        <div><button>x</button></div>
+        
+        <div class="col-span-2"><button>RESET</button></div>
+        
+        <div class="col-span-2"><button>=</button></div>
+      </div>
+    </main>  
+  </div>
+
+  <p class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Husnain Zahid</a>.
+  </p>
+</body>
+</html>

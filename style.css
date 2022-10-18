@@ -1,0 +1,265 @@
+:root {
+    --main-bg: hsl(222, 26%, 31%);
+    --toggle-bg: hsl(223, 31%, 20%);
+    --keypad-bg: var(--toggle-bg);
+    --screen-bg: hsl(224, 36%, 15%);
+    --del-key-bg: hsl(225, 21%, 49%);
+    --del-key-shadow: hsl(224, 28%, 35%);
+    --reset-key-shadow: var(--del-key-shadow);
+    --reset-key-bg: var(--del-key-bg);
+    --toggle-color: hsl(6, 63%, 50%);
+    --equal-key-bg: var(--toggle-color);
+    --other-keys-bg: hsl(30, 25%, 89%);
+    --other-keys-shadow: hsl(28, 16%, 65%);
+    --equal-key-shadow: hsl(6, 70%, 34%);
+    --header-text-color: hsl(0, 3%, 94%);
+    --keypad-text-color: hsl(221, 14%, 31%);
+    --equal-text-color: hsl(0, 3%, 94%);
+
+    --ff-main: "League Spartan"; 
+    --fw-main: 700;
+}
+
+/* Remove default margin */
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  box-sizing: border-box;
+  font-family: var(--ff-main), sans-serif;
+  font-weight: var(--fw-main);
+}
+
+/* Set core root defaults */
+html, html:focus, html:focus-within {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  height: 100%;
+}
+
+/* Set core body defaults */
+body {
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  background-color: var(--main-bg);
+  transition-duration: .2s;
+  flex-direction: column;
+}
+
+/* Set Buttons Size */
+
+button {
+  height: 100%;
+  width: 100%;
+  font-size: 2rem;
+  color: var(--keypad-text-color);
+  background-color: var(--other-keys-bg);
+  border-radius: 10px;
+  border: none;
+  padding: 5px 0;
+  box-shadow: 0 4px 2px -2px var(--other-keys-shadow);
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* UTILITY CLASSES */
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CALCULATOR APP */
+
+.calculator-app {
+  max-width: 500px;
+  width: 100%;
+  margin-inline: auto;
+  transform: scale(.9);
+}
+
+nav.flex {
+  justify-content: space-between;
+  padding: .4em 0;
+}
+
+.logo {
+  font-size: 2rem;
+  margin-top: auto;
+}
+
+nav > *, .output {
+  color: var(--header-text-color);
+}
+
+.theme {
+  flex-basis: 40%;
+  justify-content: space-between;
+  height: 5em;
+  align-items: center;
+}
+
+.theme > * {
+  font-size: 0.8rem;
+  letter-spacing: .2em;
+}
+
+.theme-toggle {
+  letter-spacing: 0;
+  z-index: 0;
+}
+
+.theme-num {
+  justify-content: space-around;
+}
+
+.capsule, .screen {
+  background-color: var(--screen-bg);
+}
+
+.capsule {
+  width: 80px;
+  height: 25px;
+  border-radius: 2.5em;
+  position: relative;
+  cursor: pointer;
+  justify-content: space-between;
+  padding-inline: .3em;
+  z-index: 1;
+}
+
+.capsule input[type="radio"] {
+  z-index: 3;
+}
+
+.circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 1.2em;
+  height: 1.2em;
+  border-radius: 20px;
+  background-color: var(--equal-key-bg);
+  z-index: 2;
+  transition-property: transform;
+  transition-timing-function: ease;
+  transition-duration: .3s;
+}
+
+input[type="radio"] {
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* TOGGLE MOVEMENT ANIMATION */
+
+#theme1:checked ~ .circle {
+  top: 17%;
+  transform: translateX(5px);
+}
+
+#theme2:checked ~ .circle {
+  top: 17%;
+  transform: translateX(33px);
+}
+
+#theme3:checked ~ .circle {
+  top: 17%;
+  transform: translateX(60px);
+}
+
+.screen {
+  height: 130px;
+  justify-content: flex-end;
+  font-size: 3.5rem;
+}
+
+.output {
+  margin: auto auto;
+  width: 90%;
+  background-color: var(--screen-bg);
+  border: none;
+  outline: none;
+  text-align: right;
+}
+
+.screen, .keypad {
+  border-radius: 10px;
+}
+
+.keypad {
+  padding: 1.5em;
+  background-color: var(--keypad-bg);
+  margin-top: 2em;
+}
+
+.keys-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1em;
+}
+
+.col-span-2 {
+  grid-column: span 2;
+}
+
+.keys-grid div {
+  padding-inline: 10px;
+}
+
+.keys-grid div:nth-child(4) button {
+  background-color: var(--del-key-bg);
+  box-shadow: 0 4px 2px -2px var(--del-key-shadow);
+}
+
+.keys-grid div:nth-child(17) button {
+  background-color: var(--reset-key-bg);
+  box-shadow: 0 4px 2px -2px var(--reset-key-shadow);
+}
+
+.keys-grid div:nth-child(18) button {
+  background-color: var(--equal-key-bg);
+  color: var(--equal-text-color);
+  box-shadow: 0 4px 2px -2px var(--equal-key-shadow);
+}
+
+.keys-grid div:nth-child(4) button,
+.keys-grid div:nth-child(17) button {
+  color: hsl(0, 3%, 94%);
+}
+
+.attribution { 
+  font-size: 1em; 
+  text-align: center; 
+  color: var(--header-text-color);
+}
+
+.attribution a { 
+  color: var(--toggle-color); 
+}
+
+@media (max-width: 405px) {
+  button {
+    font-size: 20px;
+  }
+}
+
